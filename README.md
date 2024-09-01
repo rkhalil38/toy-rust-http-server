@@ -58,7 +58,7 @@ use socket::create_client;
 async fn main() {
     let mut route_registry = RouteRegistry::new();
     route_registry.create_route("/retrievehtml", "html", "./main.html");
-    let _client = create_client(&route_registry);
+    let _client = create_client(&route_registry).await;
 }
 ```
 
