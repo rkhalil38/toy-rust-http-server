@@ -26,7 +26,7 @@ cargo run main.rs
 ## Using the Server
 
 ### Creating a Route Registry
-To create a route, we first need a `RouteRegistry` object. This object needs to be mutable because we will be adding routes to it. For this, we will have to import the object from registry.
+To create a route, we first need a `RouteRegistry` object. This object needs to be mutable because we will be adding routes to it.
 ```rust
 use registry::RouteRegistry;
 
@@ -49,7 +49,7 @@ async fn main() {
 Here, we call the `create_route` method and pass in our desired path, content type, and the path of the content source.
 
 ### Creating a Client
-Now, we need to create a client. For this, we will have to import `create_client` from socket.
+Now, we need to create a client.
 ```rust
 use registry::RouteRegistry;
 use socket::create_client;
