@@ -26,8 +26,10 @@ cargo run main.rs
 ## Using the Server
 
 ### Creating a Route Registry
-To create a route, we first need a `RouteRegistry` object. This object needs to be mutable because we will be adding routes to it.
+To create a route, we first need a `RouteRegistry` object. This object needs to be mutable because we will be adding routes to it. For this, we will have to import the object from registry.
 ```rust
+use registry::RouteRegistry;
+
 #[tokio::main]
 async fn main() {
   let mut route_registry = RouteRegistry::new();
@@ -36,6 +38,8 @@ async fn main() {
 ### Creating a Route
 Using the `RouteRegistry` object we just created, we can create routes.
 ```rust
+use registry::RouteRegistry;
+
 #[tokio::main]
 async fn main() {
     let mut route_registry = RouteRegistry::new();
@@ -43,6 +47,20 @@ async fn main() {
 }
 ```
 Here, we call the `create_route` method and pass in our desired path, content type, and the path of the content source.
+
+### Creating a Client
+Now, we need to create a client. For this, we will have to import `create_client` from socket.
+```rust
+use registry::RouteRegistry;
+use socket::create_client;
+
+#[tokio::main]
+async fn main() {
+    let mut route_registry = RouteRegistry::new();
+    route_registry.create_route("/retrievehtml", "html", "./main.html");
+    let _client = create_client(&route_registry);
+}
+```
 
 ### Hitting the Endpoint
 Now, if we run the server and hit the endpoint, the HTML file we pointed to will be returned.
