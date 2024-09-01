@@ -193,14 +193,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "rust-http-server"
-version = "0.1.0"
-dependencies = [
- "mio",
- "tokio",
-]
-
-[[package]]
 name = "rustc-demangle"
 version = "0.1.24"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -281,6 +273,14 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn",
+]
+
+[[package]]
+name = "toy-rust-http-server"
+version = "0.1.0"
+dependencies = [
+ "mio",
+ "tokio",
 ]
 
 [[package]]
