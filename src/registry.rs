@@ -1,5 +1,7 @@
 use std::collections::HashMap;
 use crate::{route::Route, util::stringify_file};
+
+// Representation of RouteRegistry, stores all routes in HashMap
 pub struct RouteRegistry {
     routes: HashMap<String, String>
 }
@@ -11,6 +13,7 @@ impl RouteRegistry {
         }
     }
 
+    //Matches content to corresponding HTTP format
     pub fn create_route(&mut self, path: &str, content: &str, payload_source: &str) {
         let content_type = match content {
             "json" => "application/json\r\n",
@@ -38,6 +41,7 @@ impl RouteRegistry {
         
     }
 
+    //Checks HashMap for route, serves 404 NOT FOUND otherwise
     pub fn serve_route(&self, request: &str) -> String {
         return match self.routes.get(request) {
             Some(x) => String::from(x),
