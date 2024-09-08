@@ -20,7 +20,7 @@ impl RouteRegistry {
             "html" => "text/html\r\n",
             "text" => "text/plain\r\n",
             "css" => "text/css\r\n",
-            "js" => "application/js\r\n",
+            "js" => "application/javascript\r\n",
             _ => panic!("CONTENT TYPE NOT SUPPORTED")
         };
     

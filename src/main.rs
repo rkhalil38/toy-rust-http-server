@@ -6,7 +6,7 @@ pub mod registry;
 //Play around with the server inside main()
 #[tokio::main]
 async fn main() {
-    
+
 }
 
 
