@@ -69,7 +69,7 @@ curl http://localhost:4221/retrievehtml
 ```
 If we enter the URL into the browser, the HTML will be fully rendered.
 ### Other Content Types
-Currently, the server supports text, HTML, CSS, and JSON.
+Currently, the server supports plain text, JS, HTML, CSS, and JSON.
 ```rust
 route_registry.create_route("/stylesheet.css", "css", "./stylesheet.css");
 route_registry.create_route("/retrievetext", "text", "this is a text message");
