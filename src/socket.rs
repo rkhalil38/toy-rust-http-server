@@ -4,7 +4,10 @@ use crate::util::extract_path;
 
 //Creates client and establishes TCP listener on port 4000
 pub async fn create_client(registry: &RouteRegistry) {
-    let listener: TcpListener =  TcpListener::bind("127.0.0.1:4000").unwrap();
+    let listener: TcpListener =  match TcpListener::bind("127.0.0.1:4000") {
+        Ok(listener) => listener,
+        Err(_error) => panic!("Could not create client!")
+    };
 
     for stream in listener.incoming() {
         match stream {
@@ -22,7 +25,16 @@ pub async fn create_client(registry: &RouteRegistry) {
 async fn handle_client(mut stream: &TcpStream, registry: &RouteRegistry) {
     let buf_reader = BufReader::new(stream);
 
-    let request_line: String = buf_reader.lines().next().unwrap().unwrap();
+    let pre_request_line =  match buf_reader.lines().next() {
+        Some(request_line) => request_line,
+        None => panic!("Could not parse string!")
+    };
+
+    let request_line = match pre_request_line {
+        Ok(request) => request,
+        Err(err) => panic!("Could not parse string: {}", err)
+    };
+
     let path = extract_path(request_line);
     println!("{}", path);
 

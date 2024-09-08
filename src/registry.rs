@@ -20,6 +20,7 @@ impl RouteRegistry {
             "html" => "text/html\r\n",
             "text" => "text/plain\r\n",
             "css" => "text/css\r\n",
+            "js" => "application/js\r\n",
             _ => panic!("CONTENT TYPE NOT SUPPORTED")
         };
     
@@ -28,6 +29,7 @@ impl RouteRegistry {
             "html" => &stringify_file(payload_source),
             "text" => payload_source,
             "css" => &stringify_file(payload_source),
+            "js" => &stringify_file(payload_source),
             _ => panic!("CONTENT TYPE NOT SUPPORTED")
         };
     
