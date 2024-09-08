@@ -9,6 +9,8 @@ pub async fn create_client(registry: &RouteRegistry) {
         Err(_error) => panic!("Could not create client!")
     };
 
+    println!("\nLocal Host created on port 4000: http://localhost:4000");
+
     for stream in listener.incoming() {
         match stream {
             Ok(stream) => {
